@@ -1,0 +1,22 @@
+{
+  "extends": "../../.babelrc",
+  "presets": [
+    "@babel/preset-react",
+    "@babel/preset-flow",
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "last 2 chrome versions"
+          ]
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    ["react-flow-props-to-prop-types"]
+  ]
+}
