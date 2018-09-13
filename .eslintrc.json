@@ -1,0 +1,65 @@
+{
+    "parser": "babel-eslint",
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true,
+        "jest": true,
+        "commonjs": true
+    },
+    "extends": ["eslint:recommended","plugin:react/recommended","airbnb"],
+    "parserOptions": {
+        "ecmaVersion": 2017,
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "promise",
+        "import",
+        "babel",
+        "flowtype"
+    ],
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "never"
+        ],
+        "babel/quotes": 0,
+        "import/order": 0,
+        "import/prefer-default-export": 0,
+        "no-plusplus": 0,
+        "no-underscore-dangle": 0,
+        "consistent-return": 0,
+        "prefer-destructuring": [2, { "object": true, "array": false }],
+        "global-require": 0,
+        "react/prefer-stateless-function": 0,
+        "jsx-a11y/label-has-for": 0,
+        "jsx-a11y/anchor-is-valid": 0,
+        "jsx-a11y/alt-text": 0,
+        "react/jsx-indent": 0,
+        "react/jsx-indent-props": 0,
+        "react/no-array-index-key": 0,
+        "no-restricted-syntax": 0,
+        "no-restricted-globals": [2, "event"],
+        "comma-dangle": 0,
+        "promise/prefer-await-to-then": 1
+    }
+
+
+}

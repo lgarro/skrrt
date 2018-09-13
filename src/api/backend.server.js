@@ -6,7 +6,7 @@ import apiRoutes from './routes'
 
 const Koa = require('koa')
 
-const port = 3000
+const port = process.env.PORT || 3000
 export default class BackendServer {
     constructor() {
         this.app = new Koa()

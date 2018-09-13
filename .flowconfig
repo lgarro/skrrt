@@ -1,0 +1,6 @@
+[ignore]
+.*/dist/.*
+.*/tests/.*
+[options]
+all=true
+emoji=true
