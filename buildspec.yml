@@ -19,8 +19,6 @@ phases:
       - echo looking for created dist build
       - ls
       - echo Build completed on `date`
-      - echo check dist folder created
-      - ls $CODEBUILD_SRC_DIR/dist
 # Include only the files required for your application to run.
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
 # used only for building and testing.
