@@ -21,6 +21,8 @@ phases:
       - echo srcdir $SRC_DIR
       - echo codebuildsrcdir $CODEBUILD_SRC_DIR
       - echo Build completed on `date`
+      - echo current dir in post build
+      - pwd
 # Include only the files required for your application to run.
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
 # used only for building and testing.
