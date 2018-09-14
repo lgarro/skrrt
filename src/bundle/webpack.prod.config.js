@@ -5,24 +5,86 @@ const nodeExternals = require('webpack-node-externals')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+// const buildPath = path.resolve(__dirname, './../../dist/public')
+const clientPath = path.resolve(__dirname, './../client')
+const serverPath = path.resolve(__dirname, './../api')
+const moduleRulesClient = {
 
-const moduleRules = {
+
     rules: [
         {
-            test: /\.js$/,
+            test: /\.(js|jsx)$/,
             exclude: /node_modules/,
-            loaders: ['babel-loader'],
+            loaders: 'babel-loader',
+            options: {
+                extends: path.join(clientPath, '.babelrc'),
+                cacheDirectory: true,
+            },
+            resolve: { extensions: ['.js', '.jsx'] }
         },
         {
-            test: /\.js$/,
+            // test: /\.js$/,
+            test: /\.(js|jsx)$/,
             exclude: /node_modules/,
+            loader: 'eslint-loader',
+            enforce: 'pre',
+            options: {
+                emitWarning: true,
+            }
+        },
+        {
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            loaders: [
+                'url-loader?limit=10000&name=images/[name].[hash].[ext]',
+            ],
+        },
+        {
+            test: /\.(eot|ttf|woff|woff2)$/,
+            loader: 'file-loader?name=fonts/[name].[ext]',
+        },
+        {
+            test: /\.scss$/,
+            use: [
+                'style-loader',
+                MiniCssExtractPlugin.loader,
+                'css-loader',
+                'sass-loader'
+            ]
+        }
+    ],
+}
+const moduleRulesServer = {
+
+
+    rules: [
+        {
+            test: /\.(js)$/,
+            exclude: /node_modules/,
+            loaders: 'babel-loader',
+            options: {
+                extends: path.join(serverPath, '.babelrc'),
+                cacheDirectory: true,
+            },
+            resolve: { extensions: ['.js'] }
+        },
+        {
+            // test: /\.js$/,
+            test: /\.(js)$/,
+            exclude: /node_modules/,
+            enforce: 'pre',
             use: ['eslint-loader']
         },
         {
-            test: /\.css$/,
-            use: [MiniCssExtractPlugin.loader, 'css-loader']
-        }
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            loaders: [
+                'url-loader?limit=10000&name=images/[name].[hash].[ext]',
+            ],
+        },
+        {
+            test: /\.(eot|ttf|woff|woff2)$/,
+            loader: 'file-loader?name=fonts/[name].[ext]',
+        },
     ],
 }
 const htmlPlugin = new HtmlWebPackPlugin({
@@ -53,7 +115,7 @@ const namedModulesPlugin = new webpack.NamedModulesPlugin()
 
 const frontendBundle = {
     target: 'web',
-    mode: 'development',
+    mode: 'production',
     entry: {
         app: ['./src/client/index.jsx'],
         vendor: ['react'] // extract chunk
@@ -62,33 +124,18 @@ const frontendBundle = {
         path: path.resolve(__dirname, './../../dist/public'),
         filename: '[name].[hash].js',
     },
-    module: moduleRules,
+    module: moduleRulesClient,
     plugins: [
         new CleanWebpackPlugin(['dist']),
         htmlPlugin,
         miniCSSPlugin,
         hotModulePlugin,
         namedModulesPlugin
-    ],
-    optimization: {
-        minimizer: [
-            new UglifyJsPlugin({
-                compress: {
-                    warnings: false,
-                    comparisons: false
-                },
-                output: {
-                    comments: false,
-                    ascii_only: true
-                },
-                sourceMap: true
-            })
-        ]
-    }
+    ]
 }
 const backendBundle = {
     target: 'node',
-    mode: 'development',
+    mode: 'production',
     entry: {
         app: ['./src/api/index.js']
     },
@@ -96,6 +143,7 @@ const backendBundle = {
         path: path.resolve(__dirname, './../../dist'),
         filename: 'bundle-back.js'
     },
+    module: moduleRulesServer,
     externals: [nodeExternals()],
 }
 module.exports = [frontendBundle, backendBundle]

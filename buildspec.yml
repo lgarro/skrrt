@@ -13,7 +13,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Compiling the Node.js code
-      - yarn build:development
+      - yarn build
   post_build:
     commands:
       - echo looking for created dist build
