@@ -19,6 +19,8 @@ phases:
       - echo looking for created dist build
       - ls
       - echo Build completed on `date`
+      - echo starting app
+      - yarn start
 # Include only the files required for your application to run.
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
 # used only for building and testing.
