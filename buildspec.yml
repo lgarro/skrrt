@@ -18,6 +18,8 @@ phases:
     commands:
       - echo looking for created dist build
       - ls
+      - echo srcdir $SRC_DIR
+      - echo codebuildsrcdir $CODEBUILD_SRC_DIR
       - echo Build completed on `date`
 # Include only the files required for your application to run.
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
@@ -25,7 +27,6 @@ phases:
 # ExpressJS apps will need other artifact directories included (bin/*, public/*, routes/*, views/* etc).
 artifacts:
   files:
-    - $CODEBUILD_SRC_DIR/dist/
     - server.js
     - package.json
     - node_modules/*
