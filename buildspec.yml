@@ -32,7 +32,6 @@ phases:
 artifacts:
   files:
     - dist/**
-    - **/dist/**/?(*.js|*.jsx|*.html)
     - server.js
     - package.json
     - $(Build.SourcesDirectory)
