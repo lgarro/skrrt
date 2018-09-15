@@ -32,7 +32,7 @@ phases:
 artifacts:
   files:
     - dist/**
+    - dist/public/**
     - server.js
     - package.json
-    - $(Build.SourcesDirectory)
  # discard-paths: yes
