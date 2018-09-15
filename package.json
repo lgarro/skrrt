@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint ./src --fix",
     "build:development": "webpack --mode development --config ./src/bundle/webpack.dev.config.js",
-    "build": "webpack --mode production --optimize-minimize --config ./src/bundle/webpack.prod.config.js",
+    "build": "webpack --mode production --config ./src/bundle/webpack.prod.config.js",
     "start:client": "webpack-dev-server --mode development --config ./src/bundle/webpack.dev.config.js --open",
     "start:server": "nodemon -r dotenv.config.js ./src/api/index.js --inspect --exec babel-node --presets @babel/preset-env",
     "start:development": "concurrently --kill-others-on-fail \"yarn start:server\" \"yarn start:client\"",
