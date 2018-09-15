@@ -109,8 +109,6 @@ const miniCSSPlugin = new MiniCssExtractPlugin({
     chunkFilename: '[id].css'
 })
 
-const hotModulePlugin = new webpack.HotModuleReplacementPlugin()
-
 const namedModulesPlugin = new webpack.NamedModulesPlugin()
 
 const frontendBundle = {
@@ -129,7 +127,6 @@ const frontendBundle = {
         new CleanWebpackPlugin(['dist']),
         htmlPlugin,
         miniCSSPlugin,
-        hotModulePlugin,
         namedModulesPlugin
     ]
 }
