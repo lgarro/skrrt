@@ -5,8 +5,7 @@ const nodeExternals = require('webpack-node-externals')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-// const buildPath = path.resolve(__dirname, './../../dist/public')
+
 const clientPath = path.resolve(__dirname, './../client')
 const serverPath = path.resolve(__dirname, './../api')
 const moduleRulesClient = {
@@ -69,7 +68,6 @@ const moduleRulesServer = {
             resolve: { extensions: ['.js'] }
         },
         {
-            // test: /\.js$/,
             test: /\.(js)$/,
             exclude: /node_modules/,
             enforce: 'pre',
@@ -114,6 +112,7 @@ const namedModulesPlugin = new webpack.NamedModulesPlugin()
 const frontendBundle = {
     target: 'web',
     mode: 'production',
+    devtool: 'source-map',
     entry: {
         app: ['./src/client/index.jsx'],
         vendor: ['react'] // extract chunk
