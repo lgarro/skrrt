@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint ./src --fix",
     "build:development": "webpack --mode development --config ./src/bundle/webpack.dev.config.js",
-    "build": "webpack --mode production --config ./src/bundle/webpack.prod.config.js",
+    "build": "webpack --mode production --optimize-minimize --config ./src/bundle/webpack.prod.config.js",
     "start:client": "webpack-dev-server --mode development --config ./src/bundle/webpack.dev.config.js --open",
     "start:server": "nodemon -r dotenv.config.js ./src/api/index.js --inspect --exec babel-node --presets @babel/preset-env",
     "start:development": "concurrently --kill-others-on-fail \"yarn start:server\" \"yarn start:client\"",
@@ -41,7 +41,8 @@
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
     "rimraf": "^2.6.2",
-    "styled-components": "^3.3.3"
+    "styled-components": "^3.3.3",
+    "webpack-merge": "^4.1.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.51",
@@ -78,9 +79,9 @@
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
-    "webpack": "^4.12.0",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4",
+    "webpack": "^4.19.0",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8",
     "webpack-node-externals": "^1.7.2"
   },
   "jest": {

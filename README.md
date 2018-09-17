@@ -1,8 +1,8 @@
 # React-Boilerplate
-Enjoy the React skrrt boilerplate. Featuring react & node
+Enjoy the React skrrt boilerplate. Featuring react & koa
 ## Setup
-## For local environment run
 yarn install
+## For local environment run
 yarn start:development
 ## For development build
 yarn build:development
