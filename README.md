@@ -6,3 +6,5 @@ yarn install
 yarn start:development
 ## For development build
 yarn build:development
+## Live demo
+http://skrrt-env.4mnpirwpmg.us-east-1.elasticbeanstalk.com/
