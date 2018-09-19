@@ -1,1 +1,2 @@
 export const SET_WELCOME_MESSAGE = 'SET_WELCOME_MESSAGE'
+export const SET_APP_USERS = 'SET_APP_USERS'

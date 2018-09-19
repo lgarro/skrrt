@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 import Navigation from '../../components/navigation'
@@ -19,7 +20,7 @@ class Home extends Component<Props> {
     callApi = async () => {
         const { setWelcomeMessage } = this.props
         const response = await axios.get('api/static')
-        setWelcomeMessage(response.data.welcomeMessage)
+        setWelcomeMessage(response.data.description)
     }
 
     render() {
@@ -59,4 +60,4 @@ const connector = connect(
     })
 )
 
-export default connector(Home)
+export default withRouter(connector(Home))

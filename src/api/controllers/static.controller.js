@@ -1,12 +1,12 @@
 /* eslint-disable import/order */
 import Router from 'koa-router'
-import Static from './../models/Static'
+import StaticModel from './../models/Static.model'
 
 export default new Router({ prefix: '/static' })
     .get('/', async (ctx) => {
         try {
-            const results = await Static.find({})
-            ctx.body = results[0]
+            const staticDataScan = await StaticModel.scan().exec()
+            ctx.body = staticDataScan[0]
         } catch (e) {
             throw e
         }

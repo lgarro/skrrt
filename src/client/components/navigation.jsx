@@ -26,6 +26,6 @@ const Navigation = (props: Props) => (
 export default Navigation
 
 const NavigationItem = styled.li`
-background-color: blue;
+background-color: #e6f7ff;
 `
 

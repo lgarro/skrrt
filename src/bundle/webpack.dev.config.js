@@ -122,6 +122,7 @@ const frontendBundle = {
     ],
     devServer: {
         host: '0.0.0.0',
+        historyApiFallback: true,
         port: 9001,
         disableHostCheck: true,
         headers: {
