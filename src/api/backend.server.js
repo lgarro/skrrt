@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import koaStatic from 'koa-static'
+import send from 'koa-send'
 import bodyParser from 'koa-bodyparser'
+import Router from 'koa-router'
 import cors from 'kcors'
 import apiRoutes from './routes'
 
@@ -28,6 +30,11 @@ export default class BackendServer {
 
     productionSetup() {
         this.app.use(koaStatic('dist/public'))
+        const rootRouter = new Router()
+            .get('*', async (ctx) => {
+                await send(ctx, `${__dirname}dist/public/index.html`)
+            })
+        this.app.use(rootRouter.routes())
     }
 
     async start() {

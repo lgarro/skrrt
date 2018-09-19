@@ -30,6 +30,7 @@
     "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
+    "koa-send": "^5.0.0",
     "koa-static": "^4.0.3",
     "mongoose": "^5.2.15",
     "prop-types": "^15.6.2",
