@@ -13,7 +13,7 @@ const connectDatabase = async () => {
 }
 const init = async () => {
     try {
-        await connectDatabase()
+        // await connectDatabase()
         const backendStartupResponse = await server.start()
         console.log(backendStartupResponse)
     } catch (startupError) {
