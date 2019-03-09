@@ -12,7 +12,7 @@
     "build": "webpack --mode production --optimize-minimize --config ./src/bundle/webpack.prod.config.js",
     "start:client": "webpack-dev-server --mode development --config ./src/bundle/webpack.dev.config.js --open",
     "start:server": "nodemon -r dotenv.config.js ./src/api/index.js --inspect --exec babel-node --presets @babel/preset-env",
-    "start:development": "concurrently --kill-others-on-fail \"yarn start:server\" \"yarn start:client\"",
+    "start:development": "concurrently --kill-others-on-fail --prefix \"[{name}]\" --names \"KOA_SERVER,CLIENT\" -c \"bgCyan.bold,bgGreen.bold\"\"yarn start:server\" \"yarn start:client\"",
     "start": "node ./dist/bundle-back.js",
     "test": "jest ./src",
     "clean": "rimraf dist node_modules yarn.lock",
